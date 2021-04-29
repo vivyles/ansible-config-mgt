@@ -20,19 +20,19 @@
     apt:
       name: wireshark
       state: latest
-- name: Creating a directory and set time zone with a simple script 
-  hosts: all
-  become: true
-  tasks:
-	- name: Creating a directory
-        file:
+  - name: Creating a directory and set time zone with a simple script 
+    hosts: all
+    become: true
+    tasks:
+     - name: Creating a directory
+       file:
                  path: /playbooks/new-folder
                  state: directory
 
-      - name: Set timezone to Africa/Lagos
-        timezone:
-                 name: Africa/Lagos
+     - name: Set timezone to Africa/Lagos
+       timezone:
+              name: Africa/Lagos
 
-      - name: Status
-        command: echo "All tasks completed"
+     - name: Status
+       command: echo "All tasks completed"
 
