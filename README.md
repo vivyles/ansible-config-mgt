@@ -1,3 +1,3 @@
 # ansible-config-mgt
 
-# begining of something beautiful
+# begining of something nice
