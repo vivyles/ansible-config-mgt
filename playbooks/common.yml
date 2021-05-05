@@ -1,9 +1,8 @@
 ---
 # part one
 
-- name: update web, nfs and db servers
-  hosts: webservers, nfs, db
-  remote_user: ec2-user
+- name: update nfs and db servers
+  hosts: nfs, db
   become: yes
   become_user: root
   tasks:
@@ -12,11 +11,22 @@
       name: wireshark
       state: latest
 
-# part two
+ # part two
+- name: update web-servers
+  hosts: web-servers
+  remote_user: ec2-user
+  become: yes
+  become_user: root
+  tasks:
+  - name: ensure wireshark is at the latest version
+    yum:
+      name: wireshark
+      state: latest      
+
+# part three
 
 - name: update LB server
   hosts: lb
-  remote_user: ubuntu
   become: yes
   become_user: root
   tasks:
@@ -25,18 +35,4 @@
       name: wireshark
       state: latest
 
-- name: Creating a directory and set time zone with a simple script 
-  hosts: all
-  become: true
-  tasks:
-  - name: Creating a directory
-    file:
-                 path: /playbooks/new-folder
-                 state: directory
 
-  - name: Set timezone to Africa/Lagos
-    timezone:
-                 name: Africa/Lagos
-
-  - name: Status
-    command: echo "All tasks completed"

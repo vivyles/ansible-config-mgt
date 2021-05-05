@@ -1,12 +1,12 @@
 [nfs]
-172.31.28.188 ansible_ssh_user='ec2-user'
+172.31.28.188 ansible_ssh_user=Jenkins ansible_ssh_private_key_file=/home/ubuntu/.ssh/id_rsa
 
-[webservers]
-172.31.45.88 ansible_ssh_user='ec2-user'
-172.31.22.252 ansible_ssh_user='ec2-user'
+[web-servers]
+172.31.30.134 ansible_host=13.58.66.57 ansible_connection=ssh ansible_user=ec2-user ansible_ssh_private_key_file=/home/ubuntu/.ssh/key.pem
+172.31.22.48 ansible_host=52.14.33.151 ansible_connection=ssh ansible_user=ec2-user ansible_ssh_private_key_file=/home/ubuntu/.ssh/key.pem
 
 [db]
-172.31.26.103 ansible_ssh_user='ec2-user'
+172.31.26.103 ansible_ssh_user=ubuntu ansible_ssh_private_key_file=/home/ubuntu/.ssh/id_rsa
 
 [lb]
-172.31.31.33 ansible_ssh_user='ubuntu'
+172.31.31.33 ansible_ssh_user=ubuntu ansible_ssh_private_key_file=/home/ubuntu/.ssh/id_rsa
