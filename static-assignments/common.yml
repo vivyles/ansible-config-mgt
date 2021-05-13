@@ -1,0 +1,36 @@
+---
+# part one
+
+- name: update nfs and db servers
+  hosts: nfs, db
+  become: yes
+  become_user: root
+  tasks:
+  - name: ensure wireshark is at the latest version
+    yum:
+      name: wireshark
+      state: latest
+
+ # part two
+- name: update web-servers
+  hosts: web-servers
+  remote_user: ec2-user
+  become: yes
+  become_user: root
+  tasks:
+  - name: ensure wireshark is at the latest version
+    yum:
+      name: wireshark
+      state: latest
+
+# part three
+
+- name: update LB server
+  hosts: lb
+  become: yes
+  become_user: root
+  tasks:
+  - name: ensure wireshark is using the latest version
+    apt:
+      name: wireshark
+      state: latest
